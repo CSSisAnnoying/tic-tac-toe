@@ -1,0 +1,95 @@
+#root {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.board {
+    width: 540px;
+    height: 540px;
+    display: grid;
+    gap: 10px;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    overflow: hidden;
+    align-items: center;
+    justify-items: center;
+    transform: translateY(50%);
+    opacity: 0;
+    transition: all 400ms ease-out;
+    border-radius: 20px;
+    border-radius: 20px;
+}
+
+.board.running {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.square {
+    width: 160px;
+    height: 160px;
+    background: transparent;
+    cursor: pointer;
+    opacity: inherit;
+    transition: all 100ms ease-out;
+    font-size: 7rem;
+    text-align: center;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    font-family: monospace;
+    color: black;
+    position: relative;
+    outline: none;
+    border: none;
+}
+
+.square span {
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+}
+
+svg.O circle, 
+svg.X line {
+    opacity: 0;
+    transition: stroke-dashoffset 400ms ease-out, opacity 100ms ease-out, scale 400ms ease-out;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    scale: 0;
+    transform-origin: 50%;
+}
+
+svg.O,
+svg.X {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    stroke: black;
+}
+
+.square.O:disabled .O circle {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    scale: 1;
+}
+
+.square.X:disabled .X line {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    scale: 1;
+}
+
+/* .square:disabled span {
+    opacity: 1;
+} */
+
+.square:disabled {
+    pointer-events: none;
+}
+
+.board.running .square:hover,
+.board.running .square:focus-visible {
+    background: rgb(0, 129, 151);
+}

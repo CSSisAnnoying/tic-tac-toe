@@ -1,0 +1,44 @@
+.current-turn-label {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 20px;
+    position: absolute;
+    background: rgb(255, 255, 255);
+    outline: rgb(202, 202, 202) 15px solid;
+    justify-self: center;
+    width: 1000px;
+    height: 100px;
+    border-top: none;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    color: black;
+    font-size: 5rem;
+    text-align: center;
+    grid-auto-flow: column;
+    transition: transform 400ms ease-out;
+    box-shadow: 0px 0px 41px 4px rgba(0,0,0,0.75);
+    transform: translateY(-125%);
+}
+
+.current-turn-label.running {
+    transform: translateY(0%);
+}
+
+.current-turn-label div {
+    display: inline;
+    position: relative;
+    color: red;
+}
+
+.current-turn-label div span {
+    transition: all 200ms ease-out;
+    position: absolute;
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.current-choice {
+    transform: translateY(0%) !important;
+    opacity: 1 !important;
+}
