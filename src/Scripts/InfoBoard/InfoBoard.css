@@ -1,7 +1,58 @@
-.current-turn-label {
+.current-turn-container {
+    width: 495px;
+    height: 100px;
+    color: black;
+    font-size: 3rem;
+    text-align: center;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-auto-flow: column;
+}
+
+.info-board.running {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+.current-turn-container div {
+    display: inline;
+    position: relative;
+    color: red;
+}
+
+.current-turn-container div span {
+    transition: all 200ms ease-out;
+    position: absolute;
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.score-board {
+    width: 495px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+}
+
+span.current-choice {
+    transform: translateY(0%) !important;
+    opacity: 1 !important;
+}
+
+.info-board hr {
+    border: rgb(168, 168, 168) 5px solid;
+    height: 85%;
+    display: flex;
+    align-self: center;
+    border-radius: 5px;
+}
+
+.info-board {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 20px;
     position: absolute;
     background: rgb(255, 255, 255);
     outline: rgb(202, 202, 202) 15px solid;
@@ -11,34 +62,54 @@
     border-top: none;
     display: grid;
     align-content: center;
-    justify-content: center;
+    justify-content: left;
     color: black;
-    font-size: 5rem;
     text-align: center;
     grid-auto-flow: column;
-    transition: transform 400ms ease-out;
+    transition: all 600ms ease-out;
     box-shadow: 0px 0px 41px 4px rgba(0,0,0,0.75);
     transform: translateY(-125%);
-}
-
-.current-turn-label.running {
-    transform: translateY(0%);
-}
-
-.current-turn-label div {
-    display: inline;
-    position: relative;
-    color: red;
-}
-
-.current-turn-label div span {
-    transition: all 200ms ease-out;
-    position: absolute;
-    transform: translateY(-100%);
     opacity: 0;
 }
 
-.current-choice {
-    transform: translateY(0%) !important;
-    opacity: 1 !important;
+.player-names,
+.scores {
+    width: 100%;
+    height: 50%;
+}
+
+/* .player-names hr {
+   align-self: flex-end;
+   border-bottom-left-radius: 0;
+   border-bottom-right-radius: 0;
+}
+
+.scores hr {
+    align-self: flex-start;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+} */
+
+.player-names svg {
+    width: 25%;
+    height: 100%;
+}
+
+.player-names svg {
+    display: inline;
+    height: 100%;
+    aspect-ratio: 1;
+}
+
+.scores hr,
+.player-names hr {
+    height: 50%;
+}
+
+.player-names, .scores {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }

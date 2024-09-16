@@ -1,11 +1,13 @@
-import "./CurrentTurn.css"
-import { useGlobalState } from '../GlobalStateContext';
+import React from "react";
+
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/Store.js";
 
 export function CurrentTurnLabel() {
-    const { globalState } = useGlobalState();
+    const globalState = useSelector((state: RootState) => state.globalState);
 
     return (
-        <div className={`current-turn-label ${globalState.isPlaying ? "running" : ""}`}>
+        <div className="current-turn-container">
            <span>Current Turn: </span>
            <div>
             <span className={`label o ${globalState.currentTurn === "O" ? "current-choice" : ""}`}>O</span>
@@ -14,3 +16,5 @@ export function CurrentTurnLabel() {
         </div>
     )
 }
+
+//${globalState.isPlaying ? "running" : ""}

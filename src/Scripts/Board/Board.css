@@ -15,16 +15,16 @@
     overflow: hidden;
     align-items: center;
     justify-items: center;
-    transform: translateY(50%);
+    transform: translateX(-100%);
     opacity: 0;
-    transition: all 400ms ease-out;
+    transition: all 700ms ease-out;
     border-radius: 20px;
     border-radius: 20px;
 }
 
 .board.running {
     opacity: 1;
-    transform: translateY(0%);
+    transform: translateX(0%);
 }
 
 .square {
@@ -54,7 +54,7 @@
 svg.O circle, 
 svg.X line {
     opacity: 0;
-    transition: stroke-dashoffset 400ms ease-out, opacity 100ms ease-out, scale 400ms ease-out;
+    transition: stroke-dashoffset 900ms ease-out, opacity 100ms ease-out, scale 400ms ease-out;
     stroke-dasharray: 500;
     stroke-dashoffset: 500;
     scale: 0;
@@ -92,4 +92,13 @@ svg.X {
 .board.running .square:hover,
 .board.running .square:focus-visible {
     background: rgb(0, 129, 151);
+}
+
+.board.running .square:hover svg.current-turn line,
+.board.running .square:focus-visible svg.current-turn line,
+.board.running .square:hover svg.current-turn circle,
+.board.running .square:focus-visible svg.current-turn circle {
+    opacity: 0.5;
+    scale: 0.4;
+    stroke-dashoffset: 0;
 }

@@ -28,7 +28,7 @@
 }
 
 .start-menu.running {
-  transform: translateY(-100%);
+  transform: translateY(100%);
 }
 
 /* .start-menu img {
@@ -97,5 +97,6 @@
   height: 250px;
   display: grid;
   align-self: center;
-  justify-self: center;  
+  justify-self: center;
+  position: relative;
 }
