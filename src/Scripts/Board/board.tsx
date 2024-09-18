@@ -6,17 +6,19 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store.ts";
 
 export function Board() {
-    const globalState = useSelector((state: RootState) => state.globalState);    
+    const globalState = useSelector((state: RootState) => state);
+    const gameReducers = globalState.game;
+    const board = globalState.board.board;
 
     return (
-        <div className={`board ${!globalState.inMenu ? "running" : ""}`} style={{ pointerEvents: globalState.isPlaying ? "all" : "none" }}>
+        <div className={`board ${!gameReducers.inMenu ? "running" : ""}`} style={{ pointerEvents: gameReducers.inMenu ? "all" : "none" }}>
             {/* {globalState.board.map((row, rowIndex) =>
                 row.map((col, colIndex) => (
                     <Square key={`${rowIndex}-${colIndex}`} row={rowIndex} col={colIndex} squareNumber={rowIndex * 3 + colIndex + 1} />
                 ))
             )} */}
             {
-                globalState.board.map((squareContent, index) => (
+                board.map((squareContent, index) => (
                     <Square key={index} squareContent={squareContent} squareNumber={index} />
                 ))
             }

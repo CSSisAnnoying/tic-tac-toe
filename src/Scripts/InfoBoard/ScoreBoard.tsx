@@ -4,7 +4,7 @@ import { RootState } from "../../Redux/Store.ts";
 // import { Shape } from "../Shape";
 
 export function ScoreBoard() {
-    const globalState = useSelector((state: RootState) => state.globalState);
+    const scores = useSelector((state: RootState) => state.score);
 
     return (
         <div className="score-board">
@@ -13,8 +13,8 @@ export function ScoreBoard() {
                 <span>Player2 (O)</span>
             </div>
             <div className="scores">
-                <span>{globalState.scoreX}</span>
-                <span>{globalState.scoreO}</span>
+                <span>{scores.scoreX}</span>
+                <span>{scores.scoreO}</span>
             </div>
         </div>
     )

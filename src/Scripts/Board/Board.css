@@ -4,6 +4,24 @@
     justify-content: center;
 }
 
+@keyframes animateInX {
+    0% {
+        stroke-dashoffset: 23;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes animateInO {
+    0% {
+        stroke-dashoffset: 44;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
 .board {
     width: 540px;
     height: 540px;
@@ -46,59 +64,28 @@
     border: none;
 }
 
-.square span {
-    opacity: 0;
-    transition: opacity 200ms ease-out;
-}
-
-svg.O circle, 
-svg.X line {
-    opacity: 0;
-    transition: stroke-dashoffset 900ms ease-out, opacity 100ms ease-out, scale 400ms ease-out;
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
-    scale: 0;
-    transform-origin: 50%;
-}
-
-svg.O,
-svg.X {
-    position: absolute;
+.square svg {
     width: 100%;
     height: 100%;
-    stroke: black;
 }
 
-.square.O:disabled .O circle {
-    opacity: 1;
-    stroke-dashoffset: 0;
-    scale: 1;
+.square svg.X {
+    stroke-dasharray: 23;
+    stroke-dashoffset: 23;
+    animation: animateInX 300ms ease-in-out forwards;
 }
 
-.square.X:disabled .X line {
-    opacity: 1;
-    stroke-dashoffset: 0;
-    scale: 1;
+.square svg.O {
+    stroke-dasharray: 44;
+    stroke-dashoffset: 44;
+    animation: animateInO 300ms ease-in-out forwards;
 }
 
-/* .square:disabled span {
-    opacity: 1;
-} */
-
-.square:disabled {
-    pointer-events: none;
-}
-
-.board.running .square:hover,
-.board.running .square:focus-visible {
+.board.running .square:not(:disabled):hover,
+.board.running .square:not(:disabled):focus-visible {
     background: rgb(0, 129, 151);
 }
 
-.board.running .square:hover svg.current-turn line,
-.board.running .square:focus-visible svg.current-turn line,
-.board.running .square:hover svg.current-turn circle,
-.board.running .square:focus-visible svg.current-turn circle {
-    opacity: 0.5;
-    scale: 0.4;
-    stroke-dashoffset: 0;
+.square:disabled {
+    pointer-events: none;
 }

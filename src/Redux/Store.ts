@@ -1,9 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import globalStateReducer from "./GlobalStateSlice.ts";
+
+import boardReducer from "./Slices/BoardSlice.ts";
+import gameReducer from "./Slices/GameSlice.ts";
+import scoreReducer from "./Slices/ScoreSlice.ts";
 
 const store = configureStore({
     reducer: {
-        globalState: globalStateReducer
+        board: boardReducer,
+        game: gameReducer,
+        score: scoreReducer
     }
 });
 

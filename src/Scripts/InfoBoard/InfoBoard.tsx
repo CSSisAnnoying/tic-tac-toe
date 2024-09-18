@@ -7,10 +7,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store.js";
 
 export function InfoBoard() {
-    const globalState = useSelector((state: RootState) => state.globalState)
+    const gameState = useSelector((state: RootState) => state.game)
 
     return (
-        <div className={`info-board ${!globalState.inMenu ? "running" : ""}`}>
+        <div className={`info-board ${!gameState.inMenu ? "running" : ""}`}>
             <CurrentTurnLabel />
             <hr></hr>
             <ScoreBoard />

@@ -3,24 +3,25 @@ import './StartMenu.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../Redux/Store.ts';
-import { setState } from '../../Redux/GlobalStateSlice.ts';
+import { setIsPlaying, setInMenu } from "../../Redux/Slices/GameSlice.ts";
 
 export function StartMenu() {
-    const globalState = useSelector((state: RootState) => state.globalState);
+    const globalState = useSelector((state: RootState) => state);
     const dispatch = useDispatch();
+    const inMenu = globalState.game.inMenu;
 
     function onStartClicked() {
-        dispatch(setState({ key: "isPlaying", value: true }));
-        dispatch(setState({ key: "inMenu", value: false }));
+        dispatch(setIsPlaying(true));
+        dispatch(setInMenu(false));
     }
 
     return (
-        <div className={`start-menu ${!globalState.inMenu ? 'running' : ''}`}>
+        <div className={`start-menu ${!inMenu ? 'running' : ''}`}>
             <h1>Tic-Tac-Toe</h1>
             <div></div>
             <button 
                 className="start-button" 
-                onClick={globalState.inMenu ? onStartClicked : () => {}}
+                onClick={inMenu ? onStartClicked : () => {}}
             >
                 <span>Start</span>
             </button>
